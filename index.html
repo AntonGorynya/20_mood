@@ -1,9 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Настроение</title>
-  <script id="quotes_json" type="application/json">
-    [
+<html lang="en">
+  <head>
+    <meta charset="utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/starter-template.css" rel="stylesheet">
+	 
+    <title>Настроение</title>
+    <style>
+    html, body {
+      margin: 0 0;
+      padding: 0 0;
+      text-align: center;
+      font-size: 10;
+	  background:  no-repeat;
+    }
+    </style>
+  </head>
+  <body>
+  <script src="./dist/trianglify.min.js"></script>
+  <script>  
+
+  var pattern = Trianglify({
+	height: screen.height,
+	width: screen.width,
+	x_colors: "YlOrRd",	
+	cell_size: 50 }) 	  
+  var png = document.createElement('img')
+  png.src = pattern.png() 
+  document.body.style.backgroundImage="url('" + png.src.replace(/(\r\n|\n|\r)/gm, "") + "')";
+  
+  
+  var jokes = [
       {
         "phrase": "Кукурузные хлопья - теперь без асбеста!",
         "signature": "©Неизвестный маркетолог"
@@ -18,8 +50,29 @@
         "phrase": "Если ты будешь усердно работать по 8 часов в день, то обязательно станешь боссом и начнешь работать по 12"
       }
     ]
+	
+  var rand = Math.floor(Math.random() * jokes.length);
+  var joke = jokes[rand]  
+  
+  var div = document.createElement("DIV");
+  div.className = "starter-template";  
+  var h1 = document.createElement("H1");  
+   
+  var text = document.createTextNode(joke.phrase);  
+  h1.appendChild(text);
+  div.appendChild(h1);
+  
+  
+  if (joke.signature != null){  
+	  var p = document.createElement("P");  
+	  var text = document.createTextNode(joke.signature);
+	  p.className = "lead"; 
+	  p.appendChild(text);
+	  div.appendChild(p);	  
+  }
+  document.body.appendChild(div);
   </script>
-</head>
-<body>
-</body>
+
+  
+  </body>
 </html>
