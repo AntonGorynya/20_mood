@@ -1,6 +1,14 @@
 # Site for the Mood
 
-[TODO. There will be project description]
+Small site with random joke
+
+# How to install
+
+Copy this repository and host it
+
+# On-line version published on
+
+https://antongorynya.github.io/20_mood/
 
 # Project Goals
 
